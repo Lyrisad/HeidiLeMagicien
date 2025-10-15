@@ -243,6 +243,9 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: .9em;
   line-height: 1;
   color: var(--bordeaux);
+  -webkit-text-fill-color: var(--bordeaux);
+  font-variant-emoji: text;
+  font-family: Cinzel, "Times New Roman", "Noto Sans Symbols 2", "Noto Sans Symbols", serif;
   filter: drop-shadow(0 1px 3px rgba(0,0,0,.4));
   content: "";
 }
