@@ -186,7 +186,7 @@ img { max-width: 100%; height: auto; display: block; }
 .btn-ghost { background: transparent; color: var(--text); }
 .btn-ghost:hover { border-color: var(--gold); color: var(--gold-strong); }
 
-.hero-media { display: grid; place-items: center; position: relative; }
+.hero-media { display: grid; place-items: center; position: relative; margin-top: 10px;}
 .hero-media::before {
   content: "";
   position: absolute;
@@ -280,6 +280,7 @@ img { max-width: 100%; height: auto; display: block; }
   .nav-list.open { display: flex; }
   .hero-inner { grid-template-columns: 1fr; text-align: center; padding-top: 24px; }
   .hero-cta { justify-content: center; }
+  .hero-media { margin-top: 50px; }
   .cards { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
   .form-grid { grid-template-columns: 1fr; }
   .phone { width: 100%; }
@@ -319,7 +320,7 @@ img { max-width: 100%; height: auto; display: block; }
   pointer-events: none;
 }
 .card-front-content { display: grid; gap: 10px; text-align: center; width: 88%; color: #222; }
-.card-front .card-suit { font-size: 30px; color: var(--bordeaux); }
+.card-front .card-suit { font-size: 30px; color: var(--bordeaux); -webkit-text-fill-color: var(--bordeaux); font-variant-emoji: text; font-family: Cinzel, "Times New Roman", "Noto Sans Symbols 2", "Noto Sans Symbols", serif; }
 .card-front .card-kicker { color: var(--bordeaux); font-size: 14px; letter-spacing: .3px; }
 .card-front .card-title { font-weight: 700; font-family: Cinzel, serif; color: #16181b; }
 .card-front .card-text { color: #4a4f57; font-size: 14px; }
