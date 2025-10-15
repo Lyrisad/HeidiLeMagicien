@@ -34,11 +34,14 @@
   <main id="accueil" class="hero">
     <div class="container hero-inner">
       <div class="hero-copy">
-        <h1 class="hero-title">Une <span class="word-spark">étincelle</span> suffit pour allumer l’<span class="word-impossible">impossible</span>.</h1>
+        <div class="hero-slogan">
+          <canvas class="hero-particles" aria-hidden="true"></canvas>
+          <h1 class="hero-title">Une <span class="word-spark">étincelle</span> suffit pour allumer l’<span class="word-impossible">impossible</span>.</h1>
+        </div>
         <p class="hero-sub">Magie moderne, élégante et immersive — pour sublimer vos événements.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#prestations">Découvrir les prestations</a>
-          <a class="btn btn-ghost" href="#contact">Demander un devis</a>
+          <a class="btn btn-ghost" href="#contact">Formulaire de contact</a>
         </div>
       </div>
       <div class="hero-media">
@@ -159,9 +162,14 @@
 
   <section id="media" class="section media">
     <div class="container media-inner">
-      <div class="phone">
-        <div class="phone-notch" aria-hidden="true"></div>
-        <video class="phone-video" src="img/video.mov" autoplay muted loop playsinline controlslist="nodownload noplaybackrate" aria-label="Aperçu vidéo"></video>
+      <div class="phone-wrap">
+        <div class="phone-bg" aria-hidden="true">
+          <canvas class="phone-particles"></canvas>
+        </div>
+        <div class="phone">
+          <div class="phone-notch" aria-hidden="true"></div>
+          <video class="phone-video" src="img/video.mov" autoplay muted loop playsinline controlslist="nodownload noplaybackrate" aria-label="Aperçu vidéo"></video>
+        </div>
       </div>
       <aside class="media-aside">
         <header class="section-head">
@@ -276,6 +284,328 @@
         }
       });
     });
+  </script>
+  <script>
+    // Hero particles animation
+    (function () {
+      const container = document.querySelector('.hero-slogan');
+      if (!container) return;
+      const canvas = container.querySelector('.hero-particles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let width = 0, height = 0;
+      let running = false, rafId = 0;
+      let particles = [];
+      const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      function rand(min, max) { return Math.random() * (max - min) + min; }
+
+      function initParticles() {
+        const count = Math.round(Math.min(140, Math.max(50, (width * height) / 5500)));
+        particles = new Array(count).fill(0).map(() => ({
+          x: rand(0, width),
+          y: rand(0, height),
+          r: rand(0.35, 1.2),
+          vx: rand(-0.15, 0.15),
+          vy: rand(-0.25, -0.05),
+          life: rand(2, 6),
+          age: rand(0, 6),
+          tw: rand(0.5, 2.5)
+        }));
+      }
+
+      function resize() {
+        const rect = container.getBoundingClientRect();
+        const baseW = Math.max(1, Math.floor(rect.width));
+        const baseH = Math.max(1, Math.floor(rect.height));
+        const pad = 0.25; // extend ~25% on each side
+        width = Math.floor(baseW * (1 + pad * 2));
+        height = Math.floor(baseH * (1 + pad * 2));
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        canvas.style.left = (-Math.floor(baseW * pad)) + 'px';
+        canvas.style.top = (-Math.floor(baseH * pad)) + 'px';
+        canvas.style.right = 'auto';
+        canvas.style.bottom = 'auto';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        initParticles();
+      }
+
+      function drawParticle(p) {
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 2.4);
+        grad.addColorStop(0, 'rgba(249,231,159,.85)');
+        grad.addColorStop(0.35, 'rgba(227,199,120,.55)');
+        grad.addColorStop(1, 'rgba(198,161,91,0)');
+        ctx.fillStyle = grad;
+        const twinkle = 0.65 + Math.sin((p.age + p.tw) * 1.6) * 0.35;
+        ctx.globalAlpha = Math.max(0, Math.min(1, twinkle));
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 2.2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      function step(dt) {
+        ctx.clearRect(0, 0, width, height);
+        ctx.globalCompositeOperation = 'lighter';
+        for (const p of particles) {
+          p.age += dt;
+          p.x += p.vx + Math.sin((p.age + p.r) * 0.6) * 0.05;
+          p.y += p.vy;
+          if (p.y < -6) { p.y = height + 6; p.x = rand(0, width); }
+          if (p.x < -6) p.x = width + 6; else if (p.x > width + 6) p.x = -6;
+          drawParticle(p);
+        }
+        ctx.globalCompositeOperation = 'source-over';
+      }
+
+      let last = performance.now();
+      function loop(now) {
+        if (!running) return;
+        const dt = Math.min(0.033, (now - last) / 1000);
+        last = now;
+        step(dt);
+        rafId = requestAnimationFrame(loop);
+      }
+
+      function start() {
+        if (prefersReduce.matches) {
+          resize();
+          ctx.clearRect(0, 0, width, height);
+          ctx.globalCompositeOperation = 'lighter';
+          for (const p of particles) drawParticle(p);
+          ctx.globalCompositeOperation = 'source-over';
+          return;
+        }
+        if (running) return;
+        running = true;
+        last = performance.now();
+        rafId = requestAnimationFrame(loop);
+      }
+
+      function stop() {
+        running = false;
+        cancelAnimationFrame(rafId);
+      }
+
+      resize();
+      start();
+      window.addEventListener('resize', resize);
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stop(); else start();
+      });
+    })();
+  </script>
+  <script>
+    // Phone particles animation (scoped to .phone-bg)
+    (function () {
+      const container = document.querySelector('.phone-bg');
+      if (!container) return;
+      const canvas = container.querySelector('.phone-particles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let width = 0, height = 0;
+      let running = false, rafId = 0;
+      let particles = [];
+      const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      function rand(min, max) { return Math.random() * (max - min) + min; }
+
+      function initParticles() {
+        const count = Math.round(Math.min(120, Math.max(40, (width * height) / 7000)));
+        particles = new Array(count).fill(0).map(() => ({
+          x: rand(0, width),
+          y: rand(0, height),
+          r: rand(0.28, 1.0),
+          vx: rand(-0.12, 0.12),
+          vy: rand(-0.22, -0.04),
+          life: rand(2, 6),
+          age: rand(0, 6),
+          tw: rand(0.5, 2.5)
+        }));
+      }
+
+      function resize() {
+        const rect = container.getBoundingClientRect();
+        width = Math.max(1, Math.floor(rect.width));
+        height = Math.max(1, Math.floor(rect.height));
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        initParticles();
+      }
+
+      function drawParticle(p) {
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 2.2);
+        grad.addColorStop(0, 'rgba(249,231,159,.8)');
+        grad.addColorStop(0.35, 'rgba(227,199,120,.5)');
+        grad.addColorStop(1, 'rgba(198,161,91,0)');
+        ctx.fillStyle = grad;
+        const twinkle = 0.6 + Math.sin((p.age + p.tw) * 1.6) * 0.35;
+        ctx.globalAlpha = Math.max(0, Math.min(1, twinkle));
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      function step(dt) {
+        ctx.clearRect(0, 0, width, height);
+        ctx.globalCompositeOperation = 'lighter';
+        for (const p of particles) {
+          p.age += dt;
+          p.x += p.vx + Math.sin((p.age + p.r) * 0.6) * 0.05;
+          p.y += p.vy;
+          if (p.y < -6) { p.y = height + 6; p.x = rand(0, width); }
+          if (p.x < -6) p.x = width + 6; else if (p.x > width + 6) p.x = -6;
+          drawParticle(p);
+        }
+        ctx.globalCompositeOperation = 'source-over';
+      }
+
+      let last = performance.now();
+      function loop(now) {
+        if (!running) return;
+        const dt = Math.min(0.033, (now - last) / 1000);
+        last = now;
+        step(dt);
+        rafId = requestAnimationFrame(loop);
+      }
+
+      function start() {
+        if (prefersReduce.matches) {
+          resize();
+          ctx.clearRect(0, 0, width, height);
+          ctx.globalCompositeOperation = 'lighter';
+          for (const p of particles) drawParticle(p);
+          ctx.globalCompositeOperation = 'source-over';
+          return;
+        }
+        if (running) return;
+        running = true;
+        last = performance.now();
+        rafId = requestAnimationFrame(loop);
+      }
+
+      function stop() {
+        running = false;
+        cancelAnimationFrame(rafId);
+      }
+
+      resize();
+      start();
+      window.addEventListener('resize', resize);
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stop(); else start();
+      });
+    })();
+  </script>
+  <canvas class="cursor-trail" aria-hidden="true"></canvas>
+  <script>
+    // Golden cursor trail
+    (function () {
+      const canvas = document.querySelector('.cursor-trail');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let width = 0, height = 0;
+      let particles = [];
+      let lastTime = performance.now();
+      const maxAge = 0.9; // seconds
+      const spawnRate = 1 / 1000; // per ms when moving
+      let spawnAccumulator = 0;
+      let mouseX = -1000, mouseY = -1000, lastX = -1000, lastY = -1000;
+      let isMoving = false;
+
+      function resize() {
+        width = Math.max(1, Math.floor(window.innerWidth));
+        height = Math.max(1, Math.floor(window.innerHeight));
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function onMove(e) {
+        lastX = mouseX; lastY = mouseY;
+        mouseX = e.clientX; mouseY = e.clientY;
+        isMoving = true;
+      }
+      window.addEventListener('mousemove', onMove, { passive: true });
+
+      function spawnParticle(x, y) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 40 + 20; // px/s
+        particles.push({
+          x, y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 10,
+          r: Math.random() * 1.2 + 0.5,
+          age: 0,
+          tw: Math.random() * 2,
+        });
+      }
+
+      function step(dt) {
+        // spawn along path if moving
+        if (isMoving && lastX > -999) {
+          const dx = mouseX - lastX, dy = mouseY - lastY;
+          const dist = Math.hypot(dx, dy);
+          const steps = Math.max(1, Math.floor(dist / 6));
+          for (let i = 0; i < steps; i++) {
+            spawnAccumulator += dt * 1000; // ms
+            if (spawnAccumulator >= 0) {
+              const t = i / steps;
+              spawnParticle(lastX + dx * t, lastY + dy * t);
+              spawnAccumulator -= 1000 * spawnRate;
+            }
+          }
+        }
+        isMoving = false;
+
+        // physics
+        ctx.clearRect(0, 0, width, height);
+        ctx.globalCompositeOperation = 'lighter';
+        const gravity = 60; // px/s^2
+        const drag = 0.98;
+        particles = particles.filter(p => p.age < maxAge);
+        for (const p of particles) {
+          p.age += dt;
+          p.vy += gravity * dt;
+          p.vx *= drag; p.vy *= drag;
+          p.x += p.vx * dt;
+          p.y += p.vy * dt;
+
+          const life = 1 - (p.age / maxAge);
+          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
+          grad.addColorStop(0, `rgba(249,231,159,${0.65 * life})`);
+          grad.addColorStop(0.35, `rgba(227,199,120,${0.45 * life})`);
+          grad.addColorStop(1, 'rgba(198,161,91,0)');
+          ctx.fillStyle = grad;
+          ctx.globalAlpha = 0.8 * (0.65 + Math.sin((p.age + p.tw) * 10) * 0.35) * life;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r * 3.2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.globalCompositeOperation = 'source-over';
+      }
+
+      function loop(now) {
+        const dt = Math.min(0.033, (now - lastTime) / 1000);
+        lastTime = now;
+        step(dt);
+        requestAnimationFrame(loop);
+      }
+
+      resize();
+      window.addEventListener('resize', resize);
+      requestAnimationFrame(loop);
+    })();
   </script>
 </body>
 </html>
