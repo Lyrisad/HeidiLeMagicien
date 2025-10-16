@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anniversaire • Heidi Le Magicien</title>
+  <meta name="description" content="Animation magique pour anniversaire d'enfants à domicile par un magicien professionnel.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="global-glow" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html#accueil" class="brand">
+        <img class="brand-logo" src="img/Logo.png" alt="Heidi Magicien" />
+        <span class="brand-name">Heidi Le Magicien</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul id="nav-menu" class="nav-list">
+          <li><a href="index.html#accueil"><span class="nav-suit nav-spark" aria-hidden="true">&#10022;</span>Accueil</a></li>
+          <li><a href="index.html#presentation"><span class="nav-suit" aria-hidden="true">&#9824;</span>Présentation</a></li>
+          <li class="has-submenu">
+            <a href="index.html#prestations"><span class="nav-suit" aria-hidden="true">&#9827;</span>Prestations <span class="nav-caret" aria-hidden="true">▾</span></a>
+            <div class="submenu" role="menu" aria-label="Prestations">
+              <a href="anniversaire.html" role="menuitem"><span class="menu-suit">♦</span><span>Anniversaire</span></a>
+              <a href="closeup.html" role="menuitem"><span class="menu-suit">♠</span><span>Close-up</span></a>
+              <a href="mariage.html" role="menuitem"><span class="menu-suit">♥</span><span>Mariage</span></a>
+              <a href="entreprise.html" role="menuitem"><span class="menu-suit">♣</span><span>Entreprise</span></a>
+            </div>
+          </li>
+          <li><a href="index.html#media"><span class="nav-suit" aria-hidden="true">&#9830;</span>Réseaux</a></li>
+          <li><a href="index.html#contact"><span class="nav-suit" aria-hidden="true">&#9829;</span>Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section prestation-section">
+      <div class="container">
+        <header class="section-head">
+          <h1 class="section-title" data-suit="♦">Anniversaire</h1>
+          <p class="section-sub">Transformez l’anniversaire de votre enfant en moment magique et inoubliable !</p>
+        </header>
+        <div class="prestation-media">
+          <div class="text">
+            <p class="lead reveal">Vous cherchez une idée originale pour fêter l’anniversaire de votre enfant sans stress ?</p>
+            <p class="reveal delay-1">Offrez-lui une expérience magique à domicile, animée par un magicien professionnel spécialisé dans les spectacles pour enfants.</p>
+            <p class="reveal delay-2">Organiser une fête d’anniversaire peut vite devenir un véritable défi : entre les invitations, le goûter et l’envie de divertir tous les copains, difficile de tout gérer ! C’est là qu’intervient notre animation magique pour enfants : un spectacle interactif et participatif qui captera l’attention de tous dès les premières minutes.</p>
+            <div class="callout reveal delay-3">
+              <p>Pendant près d’une heure, les enfants deviennent acteurs du spectacle : ils participent, rient, s’émerveillent et plongent dans un univers où tout devient possible. Ballons, illusions, apparitions et rires s’enchaînent pour créer une ambiance festive et pleine de surprises.</p>
+            </div>
+            <p class="reveal delay-4">Avec cette animation de magie pour anniversaire, plus besoin de chercher d’idées compliquées — tout est prévu pour garantir un moment de joie, d’éclats de rire et de souvenirs magiques pour votre enfant et ses amis.</p>
+            <ul class="feature-list reveal delay-4">
+              <li>Spectacle interactif et adapté à l’âge des enfants</li>
+              <li>Ambiance joyeuse, rires et participation de tous</li>
+              <li>Organisation simplifiée: une animation clé en main</li>
+            </ul>
+            <p>Faites entrer la magie dans votre salon et offrez une fête d’anniversaire pas comme les autres !</p>
+            <div class="section-cta left">
+              <a class="btn btn-primary" href="index.html#contact">Prendre Contact</a>
+              <a class="btn btn-ghost" href="index.html#prestations">Revenir aux cartes</a>
+            </div>
+          </div>
+          <figure class="prestation-image reveal delay-2" aria-hidden="true">
+            <img src="img/prestations/Anniversaire.png" alt="Anniversaire magie" loading="lazy">
+            <figcaption class="badge">Anniversaire</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Heidi — Magicien professionnel. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('nav-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+    const y = document.getElementById('year');
+    if (y) y.textContent = String(new Date().getFullYear());
+  </script>
+</body>
+  
+</html>
+
+

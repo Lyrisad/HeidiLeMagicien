@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mariage • Heidi Le Magicien</title>
+  <meta name="description" content="Magie élégante et émotion pour sublimer votre mariage.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="global-glow" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html#accueil" class="brand">
+        <img class="brand-logo" src="img/Logo.png" alt="Heidi Magicien" />
+        <span class="brand-name">Heidi Le Magicien</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul id="nav-menu" class="nav-list">
+          <li><a href="index.html#accueil"><span class="nav-suit nav-spark" aria-hidden="true">&#10022;</span>Accueil</a></li>
+          <li><a href="index.html#presentation"><span class="nav-suit" aria-hidden="true">&#9824;</span>Présentation</a></li>
+          <li class="has-submenu">
+            <a href="index.html#prestations"><span class="nav-suit" aria-hidden="true">&#9827;</span>Prestations <span class="nav-caret" aria-hidden="true">▾</span></a>
+            <div class="submenu" role="menu" aria-label="Prestations">
+              <a href="anniversaire.html" role="menuitem"><span class="menu-suit">♦</span><span>Anniversaire</span></a>
+              <a href="closeup.html" role="menuitem"><span class="menu-suit">♠</span><span>Close-up</span></a>
+              <a href="mariage.html" role="menuitem"><span class="menu-suit">♥</span><span>Mariage</span></a>
+              <a href="entreprise.html" role="menuitem"><span class="menu-suit">♣</span><span>Entreprise</span></a>
+            </div>
+          </li>
+          <li><a href="index.html#media"><span class="nav-suit" aria-hidden="true">&#9830;</span>Réseaux</a></li>
+          <li><a href="index.html#contact"><span class="nav-suit" aria-hidden="true">&#9829;</span>Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section prestation-section">
+      <div class="container">
+        <header class="section-head">
+          <h1 class="section-title" data-suit="♥">Mariage</h1>
+          <p class="section-sub">Élégance et émotion — des moments magiques qui rapprochent les générations.</p>
+        </header>
+        <div class="prestation-media">
+          <div class="text">
+            <p class="lead reveal"><strong>Magicien pour mariage</strong> – Offrez une animation magique et inoubliable à vos invités !</p>
+            <p class="reveal delay-1">Transformez votre mariage en un moment encore plus féérique grâce à une animation de magie personnalisée. En tant que magicien professionnel spécialisé dans les mariages, je crée une ambiance élégante, interactive et pleine d’émotions, qui émerveillera aussi bien les mariés que leurs invités.</p>
+            <div class="callout reveal delay-2">
+              <p>Pendant le cocktail, le vin d’honneur ou le repas, la magie close-up — aussi appelée magie de proximité — s’invite directement auprès de vos convives. Tours de cartes, objets empruntés, illusions impossibles et moments de rire s’enchaînent sous leurs yeux pour une expérience unique et conviviale.</p>
+            </div>
+            <p><strong>Pourquoi choisir un magicien pour votre mariage ?</strong></p>
+            <ul class="feature-list reveal delay-3">
+          <li>Animation originale et raffinée, pour toutes les générations</li>
+          <li>Magie participative qui crée du lien entre vos invités</li>
+          <li>Ambiance élégante et surprenante, compatible avec tous les styles</li>
+          <li>Souvenirs inoubliables pour sublimer votre journée</li>
+            </ul>
+            <p>Que vous souhaitiez une intervention discrète et élégante pendant le repas, ou un spectacle interactif pour clôturer la soirée, chaque prestation est conçue sur mesure selon vos envies et le style de votre réception.</p>
+            <p><strong>Offrez à vos invités un souvenir magique !</strong> Contactez votre magicien de mariage pour une animation moderne, dynamique et inoubliable, qui fera de votre union un moment tout simplement enchanteur.</p>
+            <div class="section-cta left">
+              <a class="btn btn-primary" href="index.html#contact">Prendre Contact</a>
+              <a class="btn btn-ghost" href="index.html#prestations">Revenir aux cartes</a>
+            </div>
+          </div>
+          <figure class="prestation-image reveal delay-2" aria-hidden="true">
+            <img src="img/prestations/Mariage.jpg" alt="Magie pour mariage" loading="lazy">
+            <figcaption class="badge">Mariage</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Heidi — Magicien professionnel. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('nav-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+    const y = document.getElementById('year');
+    if (y) y.textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>
+
+

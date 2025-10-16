@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Close-up • Heidi Le Magicien</title>
+  <meta name="description" content="Magie de proximité pour vos cocktails, dîners et événements intimistes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="global-glow" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html#accueil" class="brand">
+        <img class="brand-logo" src="img/Logo.png" alt="Heidi Magicien" />
+        <span class="brand-name">Heidi Le Magicien</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul id="nav-menu" class="nav-list">
+          <li><a href="index.html#accueil"><span class="nav-suit nav-spark" aria-hidden="true">&#10022;</span>Accueil</a></li>
+          <li><a href="index.html#presentation"><span class="nav-suit" aria-hidden="true">&#9824;</span>Présentation</a></li>
+          <li class="has-submenu">
+            <a href="index.html#prestations"><span class="nav-suit" aria-hidden="true">&#9827;</span>Prestations <span class="nav-caret" aria-hidden="true">▾</span></a>
+            <div class="submenu" role="menu" aria-label="Prestations">
+              <a href="anniversaire.html" role="menuitem"><span class="menu-suit">♦</span><span>Anniversaire</span></a>
+              <a href="closeup.html" role="menuitem"><span class="menu-suit">♠</span><span>Close-up</span></a>
+              <a href="mariage.html" role="menuitem"><span class="menu-suit">♥</span><span>Mariage</span></a>
+              <a href="entreprise.html" role="menuitem"><span class="menu-suit">♣</span><span>Entreprise</span></a>
+            </div>
+          </li>
+          <li><a href="index.html#media"><span class="nav-suit" aria-hidden="true">&#9830;</span>Réseaux</a></li>
+          <li><a href="index.html#contact"><span class="nav-suit" aria-hidden="true">&#9829;</span>Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section prestation-section">
+      <div class="container">
+        <header class="section-head">
+          <h1 class="section-title" data-suit="♠">Close-up</h1>
+          <p class="section-sub">Effets impossibles sous vos yeux — idéale pour cocktails et dîners.</p>
+        </header>
+        <div class="prestation-media">
+          <div class="text">
+            <p class="lead reveal"><strong>Découvrez la magie close-up</strong> : une expérience unique au plus près de vos invités !</p>
+        <p class="reveal delay-1">Offrez à vos convives un moment d’émerveillement et d’élégance avec un magicien professionnel spécialisé en magie close-up. Idéale pour les mariages, soirées d’entreprise, cocktails, galas ou réceptions, la magie de proximité crée une atmosphère conviviale et pleine de surprises, directement entre les mains de vos invités.</p>
+        <div class="callout reveal delay-2">
+          <p>Grâce à des illusions visuelles, des tours de cartes spectaculaires, des apparitions, et une interaction directe avec le public, la magie close-up transforme votre événement en un instant inoubliable. Chaque prestation est personnalisée pour s’adapter à votre ambiance, qu’elle soit élégante, festive ou décontractée.</p>
+        </div>
+        <p><strong>Pourquoi choisir la magie close-up pour votre événement ?</strong></p>
+        <ul class="feature-list reveal delay-3">
+          <li>Animation moderne et raffinée pour toutes les générations</li>
+          <li>Magie participative qui crée du lien et suscite la curiosité</li>
+          <li>Expérience immersive, parfaite pour briser la glace</li>
+          <li>Prestation adaptée à vos objectifs et à votre public</li>
+        </ul>
+        <p>Que ce soit en déambulation entre les groupes ou de table en table, la magie close-up offre un spectacle vivant et interactif, idéal pour marquer les esprits et créer une ambiance mémorable.</p>
+        <p><strong>Faites de votre événement un instant magique et exclusif.</strong> Contactez dès maintenant votre magicien close-up pour une animation élégante, moderne et pleine d’émotions.</p>
+        <div class="section-cta left">
+          <a class="btn btn-primary" href="index.html#contact">Prendre Contact</a>
+          <a class="btn btn-ghost" href="index.html#prestations">Revenir aux cartes</a>
+        </div>
+          </div>
+          <figure class="prestation-image reveal delay-2" aria-hidden="true">
+            <img src="img/prestations/CloseUp.jpg" alt="Magie de proximité close-up" loading="lazy">
+            <figcaption class="badge">Close-up</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Heidi — Magicien professionnel. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('nav-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+    const y = document.getElementById('year');
+    if (y) y.textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>
+
+
