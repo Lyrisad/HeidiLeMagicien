@@ -316,9 +316,9 @@ img { max-width: 100%; height: auto; display: block; }
 .review-card:focus-within .review-stars { color: var(--gold-strong); }
 .review-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .review-author { display: flex; align-items: center; gap: 10px; }
-.review-avatar { width: 36px; height: 36px; border-radius: 50%; background: #1a1b1f; border: 1px solid var(--line); overflow: hidden; flex: 0 0 36px; }
+.review-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--bordeaux); border: 1px solid var(--line); overflow: hidden; flex: 0 0 36px; }
 .review-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.review-avatar { display: inline-flex; align-items: center; justify-content: center; font-weight: 700; color: var(--gold-strong); }
+.review-avatar { display: inline-flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; }
 .review-name { font-weight: 600; }
 .review-stars { color: var(--gold-strong); letter-spacing: 1px; }
 .review-time { color: var(--muted); font-size: 12px; margin-top: auto; }
@@ -473,6 +473,13 @@ img { max-width: 100%; height: auto; display: block; }
 .field input:focus, .field textarea:focus { border-color: rgba(198,161,91,.45); box-shadow: 0 0 0 3px rgba(198,161,91,.12); }
 .form-actions { display: flex; gap: 10px; margin-top: 10px; }
 .form-note { color: var(--muted); font-size: 12px; margin: 8px 0 0; }
+
+/* Message field font override (contact form) */
+#contact .contact-form textarea[name="message"] { font-family: Cinzel, serif; }
+#contact .contact-form textarea[name="message"]::placeholder { font-family: Cinzel, serif; }
+
+/* Allow vertical-only resize on contact textarea */
+#contact .contact-form textarea { resize: vertical; }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--line); padding: 20px 0; background: #0a0b0d; margin-top: auto; }
