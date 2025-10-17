@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Anniversaire • Heidi Le Magicien</title>
-  <meta name="description" content="Animation magique pour anniversaire d'enfants à domicile par un magicien professionnel.">
+  <title>Présentation • Heidi Le Magicien</title>
+  <meta name="description" content="Présentation de Heidi, magicien professionnel : parcours, style et univers.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
         <ul id="nav-menu" class="nav-list">
           <li><a href="index.html#accueil"><span class="nav-suit nav-spark" aria-hidden="true">&#10022;</span>Accueil</a></li>
-          <li><a href="presentation.html"><span class="nav-suit" aria-hidden="true">&#9824;</span>Présentation</a></li>
+          <li><a class="is-active" href="presentation.html"><span class="nav-suit" aria-hidden="true">&#9824;</span>Présentation</a></li>
           <li class="has-submenu">
             <a href="index.html#prestations"><span class="nav-suit" aria-hidden="true">&#9827;</span>Prestations <span class="nav-caret" aria-hidden="true">▾</span></a>
             <div class="submenu" role="menu" aria-label="Prestations">
@@ -40,36 +40,34 @@
   </header>
 
   <main>
-    <section class="section prestation-section">
+    <section id="presentation" class="section presentation">
       <div class="container">
         <header class="section-head">
-          <h1 class="section-title" data-suit="♦">Anniversaire</h1>
-          <p class="section-sub">Transformez l’anniversaire de votre enfant en moment magique et inoubliable !</p>
+          <h1 class="section-title">Présentation</h1>
+          <p class="section-sub">Une magie qui allie raffinement, émotion et maîtrise technique.</p>
         </header>
-        <div class="prestation-media">
-          <div class="text">
-            <p class="lead reveal">Vous cherchez une idée originale pour fêter l’anniversaire de votre enfant sans stress ?</p>
-            <p class="reveal delay-1">Offrez-lui une expérience magique à domicile, animée par un magicien professionnel spécialisé dans les spectacles pour enfants.</p>
-            <p class="reveal delay-2">Organiser une fête d’anniversaire peut vite devenir un véritable défi : entre les invitations, le goûter et l’envie de divertir tous les copains, difficile de tout gérer ! C’est là qu’intervient notre animation magique pour enfants : un spectacle interactif et participatif qui captera l’attention de tous dès les premières minutes.</p>
-            <div class="callout reveal delay-3">
-              <p>Pendant près d’une heure, les enfants deviennent acteurs du spectacle : ils participent, rient, s’émerveillent et plongent dans un univers où tout devient possible. Ballons, illusions, apparitions et rires s’enchaînent pour créer une ambiance festive et pleine de surprises.</p>
-            </div>
-            <p class="reveal delay-4">Avec cette animation de magie pour anniversaire, plus besoin de chercher d’idées compliquées — tout est prévu pour garantir un moment de joie, d’éclats de rire et de souvenirs magiques pour votre enfant et ses amis.</p>
-            <ul class="feature-list reveal delay-4">
-              <li>Spectacle interactif et adapté à l’âge des enfants</li>
-              <li>Ambiance joyeuse, rires et participation de tous</li>
-              <li>Organisation simplifiée: une animation clé en main</li>
-            </ul>
-            <p>Faites entrer la magie dans votre salon et offrez une fête d’anniversaire pas comme les autres !</p>
+        <div class="split">
+          <div class="split-col">
+            <p>
+              Depuis l’âge de 16 ans, il cultive une véritable passion pour la magie. Autodidacte, il apprend les secrets des grands illusionnistes à travers des livres et conférences, avant de s’entraîner sans relâche pour perfectionner chaque geste et chaque effet visuel.
+            </p>
+            <p>
+              À 22 ans, il débute ses spectacles de magie pour enfants et se produit lors d’événements familiaux tels que les arbres de Noël, fêtes d’école, centres de loisirs et anniversaires. Son approche unique mêle humour, participation du public et émerveillement, offrant des moments de magie interactive et inoubliables pour petits et grands.
+            </p>
+            <p>En parallèle de sa carrière scénique, il travaille avec passion auprès des jeunes en tant qu’animateur en centre de loisirs et au service jeunesse, alliant créativité, pédagogie et animation. Cette expérience renforce son sens du contact et sa capacité à captiver tous les publics.</p>
+            <p>Aujourd’hui, il intervient sur tout type d’événements : spectacles de magie pour enfants, close-up (magie de proximité), festivals, soirées privées ou animations professionnelles.</p>
             <div class="section-cta left">
               <a class="btn btn-primary" href="index.html#contact">Prendre Contact</a>
-              <a class="btn btn-ghost" href="index.html#prestations">Revenir aux cartes</a>
+              <a class="btn btn-ghost" href="index.html#accueil">Accueil</a>
             </div>
           </div>
-          <figure class="prestation-image reveal delay-2" aria-hidden="true">
-            <img src="img/prestations/Anniversaire.png" alt="Anniversaire magie" loading="lazy">
-            <figcaption class="badge">Anniversaire</figcaption>
-          </figure>
+          <div class="split-col floating-media" aria-hidden="true">
+            <div class="float-grid">
+              <img class="float-item i1" src="img/FlyingCard1.jpg" alt="Carte flottante 1">
+              <img class="float-item i2" src="img/FlyingCard2.jpg" alt="Carte flottante 2">
+              <img class="float-item i3" src="img/FlyingCard3.jpg" alt="Carte flottante 3">
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -95,7 +93,4 @@
     if (y) y.textContent = String(new Date().getFullYear());
   </script>
 </body>
-  
 </html>
-
-

@@ -1,0 +1,12 @@
+Heidi le Magicien TodoList:
+
+1. Prestations sur une page à part.
+2. Retrouver la page Entreprise
+3. Rajouter la section avis (3 avis + redirection google)
+4. Rajouter les photos dans les pages de prestations (trouver des photos pour le mariage)
+5. Rajouter la page de formations (avec un png de cartes qui volent)
+	- Vidéo
+	- lien vers le site system.io
+	- objectifs de formation
+6. "Cliquez sur les cartes pour découvrir mes prestations." (Centré et doré)
+7. moderniser la partie contact et rajouter des effets sympas

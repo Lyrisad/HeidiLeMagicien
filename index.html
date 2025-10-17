@@ -22,7 +22,7 @@
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
         <ul id="nav-menu" class="nav-list">
           <li><a href="#accueil"><span class="nav-suit nav-spark" aria-hidden="true">&#10022;</span>Accueil</a></li>
-          <li><a href="#presentation"><span class="nav-suit" aria-hidden="true">&#9824;</span>Présentation</a></li>
+          <li><a href="presentation.html"><span class="nav-suit" aria-hidden="true">&#9824;</span>Présentation</a></li>
           <li class="has-submenu">
             <a href="#prestations"><span class="nav-suit" aria-hidden="true">&#9827;</span>Prestations <span class="nav-caret" aria-hidden="true">▾</span></a>
             <div class="submenu" role="menu" aria-label="Prestations">
@@ -61,38 +61,10 @@
     </div>
   </main>
 
-  <section id="presentation" class="section presentation">
-    <div class="container">
-      <header class="section-head">
-        <h2 class="section-title">Présentation</h2>
-        <p class="section-sub">Une magie qui allie raffinement, émotion et maîtrise technique.</p>
-      </header>
-      <div class="split">
-        <div class="split-col">
-          <p>
-            Depuis l’âge de 16 ans, il cultive une véritable passion pour la magie. Autodidacte, il apprend les secrets des grands illusionnistes à travers des livres et conférences, avant de s’entraîner sans relâche pour perfectionner chaque geste et chaque effet visuel.
-          </p>
-          <p>
-            À 22 ans, il débute ses spectacles de magie pour enfants et se produit lors d’événements familiaux tels que les arbres de Noël, fêtes d’école, centres de loisirs et anniversaires. Son approche unique mêle humour, participation du public et émerveillement, offrant des moments de magie interactive et inoubliables pour petits et grands.
-          </p>
-          <p>En parallèle de sa carrière scénique, il travaille avec passion auprès des jeunes en tant qu’animateur en centre de loisirs et au service jeunesse, alliant créativité, pédagogie et animation. Cette expérience renforce son sens du contact et sa capacité à captiver tous les publics.</p>
-          <p>Aujourd’hui, il intervient sur tout type d’événements : spectacles de magie pour enfants, close-up (magie de proximité), festivals, soirées privées ou animations professionnelles.</p>
-        </div>
-        <div class="split-col floating-media" aria-hidden="true">
-          <div class="float-grid">
-            <img class="float-item i1" src="img/FlyingCard1.jpg" alt="Carte flottante 1">
-            <img class="float-item i2" src="img/FlyingCard2.jpg" alt="Carte flottante 2">
-            <img class="float-item i3" src="img/FlyingCard3.jpg" alt="Carte flottante 3">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   
-
   
-
+  
+  
   <section id="prestations" class="section prestations">
     <div class="container">
       <header class="section-head">
@@ -172,6 +144,19 @@
             </span>
           </span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="avis" class="section reviews">
+    <div class="container">
+      <header class="section-head">
+        <h2 class="section-title">Avis Google</h2>
+        <p class="section-sub">Ce que disent mes clients.</p>
+      </header>
+      <div id="reviews" class="reviews-grid" aria-live="polite"></div>
+      <div class="section-cta">
+        <a id="reviews-more" class="btn btn-ghost" href="#" target="_blank" rel="noopener noreferrer" style="display:none">Voir tous les avis</a>
       </div>
     </div>
   </section>
@@ -300,6 +285,68 @@
         }
       });
     });
+  </script>
+  <script>
+    // Google Places Reviews (replace placeholders with real values)
+    (function () {
+      const PLACE_ID = 'YOUR_GOOGLE_PLACE_ID'; // e.g. ChIJN1t_tDeuEmsRUsoyG83frY4
+      const API_KEY = 'YOUR_GOOGLE_MAPS_API_KEY';
+      const REVIEWS_LIMIT = 6;
+      const target = document.getElementById('reviews');
+      const moreBtn = document.getElementById('reviews-more');
+      if (!target) return;
+
+      function renderStars(rating) {
+        const full = Math.round(rating);
+        return '★★★★★'.slice(0, full) + '☆☆☆☆☆'.slice(0, 5 - full);
+      }
+
+      function renderReviews(place) {
+        if (!place || !place.reviews || !place.reviews.length) {
+          target.innerHTML = '<p class="section-sub">Aucun avis disponible pour le moment.</p>';
+          return;
+        }
+        const reviews = place.reviews.slice(0, REVIEWS_LIMIT);
+        target.innerHTML = reviews.map(r => `
+          <article class="review-card">
+            <div class="review-header">
+              <div class="review-author">
+                <span class="review-avatar">${r.profile_photo_url ? `<img src="${r.profile_photo_url}" alt="${r.author_name}">` : ''}</span>
+                <span class="review-name">${r.author_name || 'Client Google'}</span>
+              </div>
+              <div class="review-meta">
+                <span class="review-stars" aria-label="Note ${r.rating || ''} sur 5">${renderStars(r.rating || 5)}</span>
+              </div>
+            </div>
+            <p class="review-text">${(r.text || r.original_text || '').replace(/</g,'&lt;')}</p>
+            <span class="review-time">${r.relative_time_description || ''}</span>
+          </article>
+        `).join('');
+        if (place.url) {
+          moreBtn.style.display = '';
+          moreBtn.href = place.url;
+        }
+      }
+
+      function initPlaces() {
+        /* global google */
+        const service = new google.maps.places.PlacesService(document.createElement('div'));
+        service.getDetails({ placeId: PLACE_ID, fields: ['name','url','rating','user_ratings_total','reviews'] }, (place, status) => {
+          if (status !== google.maps.places.PlacesServiceStatus.OK) {
+            target.innerHTML = '<p class="section-sub">Impossible de charger les avis pour le moment.</p>';
+            return;
+          }
+          renderReviews(place);
+        });
+      }
+
+      // Inject script
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places&callback=__initReviews`;
+      script.async = true; script.defer = true;
+      window.__initReviews = initPlaces;
+      document.head.appendChild(script);
+    })();
   </script>
   <script>
     // Hero particles animation
