@@ -8,7 +8,7 @@ Heidi le Magicien TodoList:
 	- Vidéo
 	- lien vers le site system.io
 	- objectifs de formation
-6. "Cliquez sur les cartes pour découvrir mes prestations." (Centré et doré)
-7. moderniser la partie contact et rajouter des effets sympas
-8. METTRE EN PLACE EMAILJS pour pouvoir envoyer des mails (PRIO)
-9. FAIRE QUELQUE CHOSE AVEC LA VIDEO COOL AVEC LA CORDE (PRIO)
+6. "Cliquez sur les cartes pour découvrir mes prestations." (Centré et doré) GOOOD
+7. moderniser la partie contact et rajouter des effets sympas GOOOD
+8. METTRE EN PLACE EMAILJS pour pouvoir envoyer des mails (PRIO) GOOOD
+9. FAIRE QUELQUE CHOSE AVEC LA VIDEO COOL AVEC LA CORDE (PRIO) GOOOD
