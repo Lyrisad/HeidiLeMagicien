@@ -10,4 +10,5 @@ Heidi le Magicien TodoList:
 	- objectifs de formation
 6. "Cliquez sur les cartes pour découvrir mes prestations." (Centré et doré)
 7. moderniser la partie contact et rajouter des effets sympas
-8. METTRE EN PLACE EMAILJS pour pouvoir envoyer des mails
+8. METTRE EN PLACE EMAILJS pour pouvoir envoyer des mails (PRIO)
+9. FAIRE QUELQUE CHOSE AVEC LA VIDEO COOL AVEC LA CORDE (PRIO)
