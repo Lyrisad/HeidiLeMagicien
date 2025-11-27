@@ -286,7 +286,7 @@ img { max-width: 100%; height: auto; display: block; }
 .social svg { width: 16px; height: 16px; display: block; }
 .media-desc { color: var(--muted); margin: 0; }
 .chip-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;}
-.chip { display: inline-flex; align-items: center; padding: 6px 10px; border: 1px solid rgba(122,30,43,.45); border-radius: 999px; color: var(--bordeaux); font-size: 12px; background: rgba(122,30,43,.10); }
+.chip { display: inline-flex; align-items: center; padding: 6px 10px; border: 1px solid rgba(198,161,91,.45); border-radius: 999px; color: var(--gold-strong); font-size: 12px; background: rgba(198,161,91,.10); }
 
 /* Card suit icons before section titles */
 .section-title::before {
