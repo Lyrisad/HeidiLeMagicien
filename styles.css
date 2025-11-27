@@ -123,7 +123,7 @@ img { max-width: 100%; height: auto; display: block; }
 .nav-list .has-submenu:hover .submenu,
 .nav-list .has-submenu:focus-within .submenu { display: block; }
 .nav-list a .nav-suit { margin-right: 8px; color: var(--bordeaux); -webkit-text-fill-color: var(--bordeaux); font-variant-emoji: text; font-size: .95em; }
-.nav-list a[href$="formation.html"] .nav-suit { font-size: .8em; }
+.nav-list a[href$="formations.html"] .nav-suit { font-size: .8em; }
 .nav-list a .nav-spark { color: var(--gold-strong); -webkit-text-fill-color: var(--gold-strong); text-shadow: 0 0 6px rgba(227,199,120,.4); }
 .nav-list > li > a:hover { color: var(--text); border-color: var(--gold); }
 
