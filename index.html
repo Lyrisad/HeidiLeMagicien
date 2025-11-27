@@ -64,10 +64,49 @@
     </div>
   </main>
 
-  
-  
-  
-  
+  <section id="showreel" class="section showreel">
+    <div class="container showreel-inner">
+      <div class="showreel-content">
+        <header class="section-head left-align">
+          <h2 class="section-title" data-suit="♦">L’Expérience en Images</h2>
+          <p class="section-sub" style="font-style: italic;">Plus qu'un simple tour, une véritable rencontre !</p>
+          <p class="showreel-desc">Découvrez en quelques secondes l'ambiance unique, les rires et l'émerveillement que je crée pour vos événements. Une magie moderne qui se vit autant qu'elle se regarde.</p>
+        </header>
+        <div class="showreel-cta">
+           <span class="chip">Immersion</span>
+           <span class="chip">Réactions</span>
+           <span class="chip">Souvenirs</span>
+        </div>
+      </div>
+      <div class="video-showcase-wrapper">
+        <!-- Background Sparks -->
+        <div class="video-sparks" aria-hidden="true"></div>
+        
+        <div class="video-showcase" id="video-showcase">
+          <!-- Video Local Player -->
+          <video 
+            id="main-showreel"
+            width="640" height="480" 
+            controls 
+            preload="metadata"
+            poster="img/megamage.webp"
+            style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="img/showreel.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture de vidéos.
+          </video>
+          
+          <!-- Custom Play Overlay (disparaît au play) -->
+          <div class="video-cover" id="video-cover" role="button" aria-label="Lancer la vidéo">
+            <img src="img/megamage.webp" alt="Aperçu vidéo magie">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="prestations" class="section prestations">
     <div class="container">
       <header class="section-head">
@@ -167,7 +206,7 @@
       <aside class="media-aside">
         <header class="section-head">
           <h2 class="section-title">Suivez la magie</h2>
-          <p class="section-sub">N’hésitez pas à me suivre sur les réseaux&nbsp;!</p>
+          <p class="section-sub" style="font-style: italic; margin-bottom: -10px;">N’hésitez pas à me suivre sur les réseaux !</p>
         </header>
         <ul class="chip-list" aria-label="Thématiques disponibles">
           <li><span class="chip">Reels</span></li>
@@ -845,6 +884,27 @@ BRAVO Heidi 👏 et MERCI encore !</p>
         }
         // else: no JS handling — let mailto action proceed
       });
+    })();
+  </script>
+  <script>
+    (function () {
+      const showcase = document.getElementById('video-showcase');
+      if (!showcase) return;
+      
+      const cover = document.getElementById('video-cover');
+      const video = document.getElementById('main-showreel');
+      
+      if(cover && video) {
+        cover.addEventListener('click', () => {
+          cover.style.display = 'none';
+          video.play();
+        });
+        
+        // Si l'utilisateur lance via les contrôles natifs (s'ils sont visibles)
+        video.addEventListener('play', () => {
+          cover.style.display = 'none';
+        });
+      }
     })();
   </script>
 </body>
