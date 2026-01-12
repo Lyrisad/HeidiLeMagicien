@@ -70,10 +70,19 @@
           <a class="btn btn-ghost" href="index.html#prestations">Revenir aux cartes</a>
         </div>
           </div>
-          <figure class="prestation-image reveal delay-2" aria-hidden="true">
-            <img src="img/prestations/CloseUp.jpg" alt="Magie de proximité close-up" loading="lazy">
-            <figcaption class="badge">Close-up</figcaption>
-          </figure>
+          <div class="prestation-image reveal delay-2" aria-hidden="true">
+            <div class="carousel" id="carousel-closeup">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="img/prestations/Carroussel/closeUp/CloseUp.jpg" alt="Magie de proximité"></div>
+                <div class="carousel-slide"><img src="img/prestations/Carroussel/closeUp/Screenshot_20251016_212849_Facebook.jpg" alt="Magie de proximité"></div>
+                <div class="carousel-slide"><img src="img/prestations/Carroussel/closeUp/Screenshot_20251016_213817_Facebook.jpg" alt="Interaction close-up"></div>
+              </div>
+              <button class="carousel-btn prev" aria-label="Image précédente">&#10094;</button>
+              <button class="carousel-btn next" aria-label="Image suivante">&#10095;</button>
+              <div class="carousel-dots"></div>
+              <span class="badge">Close-up</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -97,6 +106,163 @@
     }
     const y = document.getElementById('year');
     if (y) y.textContent = String(new Date().getFullYear());
+
+    // Carousel Logic
+    (function() {
+      const carousel = document.querySelector('.carousel');
+      if (!carousel) return;
+      
+      const track = carousel.querySelector('.carousel-track');
+      const slides = Array.from(track.children);
+      // Use each image as its own blurred backdrop to éviter les bandes noires
+      slides.forEach(slide => {
+        const img = slide.querySelector('img');
+        if (img) {
+          slide.style.setProperty('--slide-bg', `url("${img.getAttribute('src')}")`);
+        }
+      });
+      const nextBtn = carousel.querySelector('.next');
+      const prevBtn = carousel.querySelector('.prev');
+      const dotsNav = carousel.querySelector('.carousel-dots');
+      // Lightbox (zoom)
+      let lightbox = document.querySelector('.lightbox');
+      if (!lightbox) {
+        lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        const zoomImg = document.createElement('img');
+        const navPrev = document.createElement('button');
+        navPrev.className = 'nav-btn prev';
+        navPrev.setAttribute('aria-label', 'Image précédente');
+        navPrev.innerHTML = '&#10094;';
+        const navNext = document.createElement('button');
+        navNext.className = 'nav-btn next';
+        navNext.setAttribute('aria-label', 'Image suivante');
+        navNext.innerHTML = '&#10095;';
+        const lbDots = document.createElement('div');
+        lbDots.className = 'lightbox-dots';
+        lightbox.append(zoomImg, navPrev, navNext, lbDots);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('show'); });
+        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('show'); });
+        document.body.appendChild(lightbox);
+      }
+      const lightboxImg = lightbox.querySelector('img');
+      const lightboxDots = lightbox.querySelector('.lightbox-dots');
+      const lightboxPrev = lightbox.querySelector('.nav-btn.prev');
+      const lightboxNext = lightbox.querySelector('.nav-btn.next');
+      lightboxDots.innerHTML = "";
+      // Progress bar (timer)
+      const progress = document.createElement('div');
+      progress.className = 'carousel-progress';
+      const bar = document.createElement('div');
+      bar.className = 'bar';
+      progress.appendChild(bar);
+      carousel.appendChild(progress);
+      
+      let currentIndex = 0;
+      let interval;
+      const AUTOPLAY_MS = 4000;
+
+      // Create dots
+      slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        const img = slides[index].querySelector('img');
+        if (img) {
+          dot.style.backgroundImage = `url("${img.getAttribute('src')}")`;
+        }
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsNav.appendChild(dot);
+        // Lightbox dots
+        const lbDot = document.createElement('div');
+        lbDot.className = 'dot';
+        if (img) lbDot.style.backgroundImage = `url("${img.getAttribute('src')}")`;
+        lightboxDots.appendChild(lbDot);
+        lbDot.addEventListener('click', (e) => { e.stopPropagation(); openLightbox(index); });
+
+        // zoom on click
+        if (img) {
+          slides[index].addEventListener('click', () => openLightbox(index));
+        }
+      });
+      const lbDotsArr = Array.from(lightboxDots.children);
+      
+      const dots = Array.from(dotsNav.children);
+
+      function updateDots(index) {
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+      }
+      function updateLightboxDots(index) {
+        lbDotsArr.forEach(dot => dot.classList.remove('active'));
+        lbDotsArr[index].classList.add('active');
+      }
+      function normalizedIndex(i) {
+        const len = slides.length;
+        if (len === 0) return 0;
+        return (i % len + len) % len;
+      }
+      function openLightbox(index) {
+        const target = normalizedIndex(index);
+        goToSlide(target);
+        const img = slides[target].querySelector('img');
+        if (img) lightboxImg.src = img.getAttribute('src');
+        updateLightboxDots(target);
+        lightbox.classList.add('show');
+      }
+
+      function goToSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        
+        currentIndex = index;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        updateDots(currentIndex);
+        resetTimer();
+      }
+
+      function nextSlide() { goToSlide(currentIndex + 1); }
+      function prevSlide() { goToSlide(currentIndex - 1); }
+      lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); openLightbox(currentIndex - 1); });
+      lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); openLightbox(currentIndex + 1); });
+
+      function restartProgress() {
+        if (!bar) return;
+        bar.style.transition = 'none';
+        bar.style.width = '0%';
+        // force reflow to reset transition
+        void bar.getBoundingClientRect();
+        requestAnimationFrame(() => {
+          bar.style.transition = `width ${AUTOPLAY_MS}ms linear`;
+          bar.style.width = '100%';
+        });
+      }
+
+      function startTimer() {
+        restartProgress();
+        interval = setInterval(nextSlide, AUTOPLAY_MS); // 4s autoplay
+      }
+      function resetTimer() {
+        clearInterval(interval);
+        restartProgress();
+        interval = setInterval(nextSlide, AUTOPLAY_MS);
+      }
+
+      nextBtn.addEventListener('click', () => { nextSlide(); });
+      prevBtn.addEventListener('click', () => { prevSlide(); });
+      
+      // Touch swipe support
+      let touchStartX = 0;
+      let touchEndX = 0;
+      carousel.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, {passive: true});
+      carousel.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) nextSlide();
+        if (touchEndX - touchStartX > 50) prevSlide();
+      }, {passive: true});
+
+      startTimer();
+    })();
   </script>
 </body>
 </html>
