@@ -13,14 +13,18 @@
   <meta property="og:url" content="https://heidilemagicien.fr/">
   <meta property="og:title" content="Heidi • Magicien Professionnel & Mentaliste">
   <meta property="og:description" content="Une étincelle suffit pour allumer l’impossible. Magicien professionnel pour anniversaires, mariages, entreprises et close-up.">
-  <meta property="og:image" content="https://heidilemagicien.fr/img/HeidiFire.png">
+  <meta property="og:image" content="https://heidilemagicien.fr/img/Logo.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://heidilemagicien.fr/">
   <meta property="twitter:title" content="Heidi • Magicien Professionnel & Mentaliste">
   <meta property="twitter:description" content="Une étincelle suffit pour allumer l’impossible. Magicien professionnel pour anniversaires, mariages, entreprises et close-up.">
-  <meta property="twitter:image" content="https://heidilemagicien.fr/img/HeidiFire.png">
+  <meta property="twitter:image" content="https://heidilemagicien.fr/img/Logo.png">
+  
+  <!-- Thumbnail pour les résultats de recherche (suggéré) -->
+  <meta name="thumbnail" content="https://heidilemagicien.fr/img/Logo.png">
+  <link rel="image_src" href="https://heidilemagicien.fr/img/Logo.png">
 
   <link rel="canonical" href="https://heidilemagicien.fr/index.html">
 
@@ -37,7 +41,7 @@
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Heidi Le Magicien",
-    "image": "https://heidilemagicien.fr/img/Heidi.png",
+    "image": "https://heidilemagicien.fr/img/Logo.png",
     "@id": "https://heidilemagicien.fr",
     "url": "https://heidilemagicien.fr",
     "email": "contact@heidilemagicien.fr",
@@ -87,7 +91,7 @@
     </div>
   </header>
 
-  <main id="accueil" class="hero">
+  <main id="accueil" class="hero" itemscope itemtype="https://schema.org/WebPage">
     <div class="container hero-inner">
       <div class="hero-copy">
         <div class="hero-slogan">
@@ -101,9 +105,10 @@
         </div>
       </div>
       <div class="hero-media">
-        <picture>
+        <picture itemprop="primaryImageOfPage" itemscope itemtype="https://schema.org/ImageObject">
           <source srcset="img/HeidiFire.png" type="image/png">
-          <img src="img/Heidi.png" alt="Heidi le Magicien" loading="eager" />
+          <img src="img/Heidi.png" alt="Heidi le Magicien - Spectacle de magie moderne à Paris et Île-de-France" title="Heidi le Magicien - Magicien professionnel" loading="eager" itemprop="contentUrl" />
+          <meta itemprop="url" content="https://heidilemagicien.fr/img/Heidi.png">
         </picture>
       </div>
     </div>
