@@ -12,7 +12,18 @@
   <meta property="og:url" content="https://heidilemagicien.fr/closeup.html">
   <meta property="og:title" content="Magicien Close-up & Mentaliste • Animation Événementielle">
   <meta property="og:description" content="Effets impossibles sous vos yeux. Idéal pour briser la glace lors de vos cocktails et dîners.">
-  <meta property="og:image" content="https://heidilemagicien.fr/img/prestations/Carroussel/closeUp/CloseUp.jpg">
+  <meta property="og:image" content="https://heidilemagicien.fr/img/prestations/Carroussel/closeUp/CloseUp.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://heidilemagicien.fr/closeup.html">
+  <meta property="twitter:title" content="Magicien Close-up & Mentaliste • Animation Événementielle">
+  <meta property="twitter:description" content="Effets impossibles sous vos yeux. Idéal pour briser la glace lors de vos cocktails et dîners.">
+  <meta property="twitter:image" content="https://heidilemagicien.fr/img/prestations/Carroussel/closeUp/CloseUp.webp">
+
+  <!-- Geo meta (SEO local) -->
+  <meta name="geo.region" content="FR-IDF">
+  <meta name="geo.placename" content="Val-d'Oise, Paris, Yvelines, Hauts-de-Seine, Île-de-France">
 
   <link rel="canonical" href="https://heidilemagicien.fr/closeup.html">
 
@@ -31,15 +42,31 @@
     "provider": {
       "@type": "ProfessionalService",
       "name": "Heidi Le Magicien",
-      "image": "https://heidilemagicien.fr/img/Heidi.png",
+      "image": "https://heidilemagicien.fr/img/HeidiFire.webp",
       "@id": "https://heidilemagicien.fr",
       "priceRange": "€€"
     },
     "description": "Magie de proximité (close-up) pour cocktails, dîners et événements d'entreprise.",
-    "areaServed": {
-      "@type": "Country",
-      "name": "France"
-    }
+    "areaServed": [
+      {"@type": "AdministrativeArea", "name": "Val-d'Oise"},
+      {"@type": "AdministrativeArea", "name": "Paris"},
+      {"@type": "AdministrativeArea", "name": "Yvelines"},
+      {"@type": "AdministrativeArea", "name": "Hauts-de-Seine"},
+      {"@type": "AdministrativeArea", "name": "Île-de-France"}
+    ]
+  }
+  </script>
+
+  <!-- Breadcrumb Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://heidilemagicien.fr/"},
+      {"@type": "ListItem", "position": 2, "name": "Prestations", "item": "https://heidilemagicien.fr/#prestations"},
+      {"@type": "ListItem", "position": 3, "name": "Close-up", "item": "https://heidilemagicien.fr/closeup.html"}
+    ]
   }
   </script>
 </head>
@@ -48,7 +75,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html#accueil" class="brand">
-        <img class="brand-logo" src="img/Logo.png" alt="Heidi Magicien" />
+        <img class="brand-logo" src="img/Logo.webp" alt="Heidi Magicien" />
         <span class="brand-name">Heidi Le Magicien</span>
       </a>
       <nav class="site-nav" aria-label="Navigation principale">
@@ -105,9 +132,9 @@
           <div class="prestation-image reveal delay-2" aria-hidden="true">
             <div class="carousel" id="carousel-closeup">
               <div class="carousel-track">
-                <div class="carousel-slide"><img src="img/prestations/Carroussel/closeUp/CloseUp.jpg" alt="Magicien Close-up Paris - Magie de proximité élégante" title="Magie close-up pour cocktail"></div>
-                <div class="carousel-slide"><img src="img/prestations/Carroussel/closeUp/Screenshot_20251016_212849_Facebook.jpg" alt="Magicien cocktail entreprise Île-de-France" title="Animation magie close-up"></div>
-                <div class="carousel-slide"><img src="img/prestations/Carroussel/closeUp/Screenshot_20251016_213817_Facebook.jpg" alt="Magicien table à table Val d'Oise - Interaction invités" title="Magie interactive"></div>
+                <div class="carousel-slide"><img loading="lazy" src="img/prestations/Carroussel/closeUp/CloseUp.webp" alt="Magicien Close-up Paris - Magie de proximité élégante" title="Magie close-up pour cocktail"></div>
+                <div class="carousel-slide"><img loading="lazy" src="img/prestations/Carroussel/closeUp/Screenshot_20251016_212849_Facebook.webp" alt="Magicien cocktail entreprise Île-de-France" title="Animation magie close-up"></div>
+                <div class="carousel-slide"><img loading="lazy" src="img/prestations/Carroussel/closeUp/Screenshot_20251016_213817_Facebook.webp" alt="Magicien table à table Val d'Oise - Interaction invités" title="Magie interactive"></div>
               </div>
               <button class="carousel-btn prev" aria-label="Image précédente">&#10094;</button>
               <button class="carousel-btn next" aria-label="Image suivante">&#10095;</button>
@@ -116,6 +143,19 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <header class="section-head">
+          <h2 class="section-title">Découvrez aussi</h2>
+        </header>
+        <nav class="section-cta left" aria-label="Autres prestations">
+          <a class="btn btn-ghost" href="anniversaire.html">♦ Anniversaire</a>
+          <a class="btn btn-ghost" href="mariage.html">♥ Mariage</a>
+          <a class="btn btn-ghost" href="entreprise.html">♣ Entreprise</a>
+        </nav>
       </div>
     </section>
   </main>

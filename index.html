@@ -14,28 +14,45 @@
   <meta property="og:url" content="https://heidilemagicien.fr/">
   <meta property="og:title" content="Heidi • Magicien Professionnel & Mentaliste">
   <meta property="og:description" content="Une étincelle suffit pour allumer l’impossible. Magicien professionnel pour anniversaires, mariages, entreprises et close-up.">
-  <meta property="og:image" content="https://heidilemagicien.fr/img/Logo.png">
+  <meta property="og:image" content="https://heidilemagicien.fr/img/Logo.webp">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://heidilemagicien.fr/">
   <meta property="twitter:title" content="Heidi • Magicien Professionnel & Mentaliste">
   <meta property="twitter:description" content="Une étincelle suffit pour allumer l’impossible. Magicien professionnel pour anniversaires, mariages, entreprises et close-up.">
-  <meta property="twitter:image" content="https://heidilemagicien.fr/img/Logo.png">
+  <meta property="twitter:image" content="https://heidilemagicien.fr/img/Logo.webp">
   
   <!-- Thumbnail pour les résultats de recherche (suggéré) -->
-  <meta name="thumbnail" content="https://heidilemagicien.fr/img/Logo.png">
-  <link rel="image_src" href="https://heidilemagicien.fr/img/Logo.png">
+  <meta name="thumbnail" content="https://heidilemagicien.fr/img/Logo.webp">
+  <link rel="image_src" href="https://heidilemagicien.fr/img/Logo.webp">
 
   <link rel="canonical" href="https://heidilemagicien.fr/">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="preload" as="image" href="img/HeidiFire.webp" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="img/1-6e98a967.ico">
-  <link rel="apple-touch-icon" href="img/Logo.png">
+  <link rel="apple-touch-icon" href="img/Logo.webp">
   <link rel="manifest" href="manifest.json">
+
+  <!-- Geo meta (SEO local) -->
+  <meta name="geo.region" content="FR-IDF">
+  <meta name="geo.placename" content="Val-d'Oise, Paris, Yvelines, Hauts-de-Seine, Île-de-France">
+
+  <!-- Breadcrumb Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://heidilemagicien.fr/"}
+    ]
+  }
+  </script>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -43,8 +60,8 @@
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Heidi Le Magicien",
-    "image": "https://heidilemagicien.fr/img/Logo.png",
-    "logo": "https://heidilemagicien.fr/img/Logo.png",
+    "image": "https://heidilemagicien.fr/img/Logo.webp",
+    "logo": "https://heidilemagicien.fr/img/Logo.webp",
     "@id": "https://heidilemagicien.fr",
     "url": "https://heidilemagicien.fr",
     "email": "contact@heidilemagicien.fr",
@@ -76,6 +93,13 @@
     ],
     "description": "Magicien professionnel spécialisé dans le close-up, les mariages, les anniversaires et les événements d'entreprise.",
     "priceRange": "€€",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "bestRating": "5",
+      "ratingCount": "6",
+      "reviewCount": "6"
+    },
     "sameAs": [
       "https://www.instagram.com/heidilemagicien/",
       "https://www.tiktok.com/@heidi_insaisissable",
@@ -90,7 +114,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#accueil" class="brand">
-        <img class="brand-logo" src="img/Logo.png" alt="Logo Heidi Magicien - Magicien Professionnel Val d'Oise et Île-de-France" title="Heidi Le Magicien - Logo" />
+        <img class="brand-logo" src="img/Logo.webp" alt="Logo Heidi Magicien - Magicien Professionnel Val d'Oise et Île-de-France" title="Heidi Le Magicien - Logo" />
         <h1 class="brand-name" style="margin: 0;">Heidi Le Magicien</h1>
       </a>
       <nav class="site-nav" aria-label="Navigation principale">
@@ -132,9 +156,9 @@
       </div>
       <div class="hero-media">
         <picture itemprop="primaryImageOfPage" itemscope itemtype="https://schema.org/ImageObject">
-          <source srcset="img/HeidiFire.png" type="image/png">
-          <img src="img/Heidi.png" alt="Heidi le Magicien - Spectacle de magie moderne à Paris et Île-de-France" title="Heidi le Magicien - Magicien professionnel" loading="eager" itemprop="contentUrl" />
-          <meta itemprop="url" content="https://heidilemagicien.fr/img/Heidi.png">
+          <source srcset="img/HeidiFire.webp" type="image/webp">
+          <img src="img/HeidiFire.webp" alt="Heidi le Magicien - Spectacle de magie moderne à Paris et Île-de-France" title="Heidi le Magicien - Magicien professionnel" loading="eager" fetchpriority="high" itemprop="contentUrl" />
+          <meta itemprop="url" content="https://heidilemagicien.fr/img/HeidiFire.webp">
         </picture>
       </div>
     </div>
@@ -159,8 +183,8 @@
         <div class="video-sparks" aria-hidden="true"></div>
         
         <!-- The Rabbits -->
-        <img src="img/white_rabbit.png" alt="Lapin blanc magique - Animation magie enfants" title="Le lapin blanc magique" class="magic-rabbit white-rabbit" aria-hidden="true">
-        <img src="img/black_rabbit.png" alt="Lapin noir magique - Spectacle de magie" title="Le lapin noir magique" class="magic-rabbit black-rabbit" aria-hidden="true">
+        <img src="img/white_rabbit.webp" alt="Lapin blanc magique - Animation magie enfants" title="Le lapin blanc magique" class="magic-rabbit white-rabbit" aria-hidden="true" loading="lazy">
+        <img src="img/black_rabbit.webp" alt="Lapin noir magique - Spectacle de magie" title="Le lapin noir magique" class="magic-rabbit black-rabbit" aria-hidden="true" loading="lazy">
         
         <div class="video-showcase" id="video-showcase">
           <!-- Video Local Player -->
@@ -198,7 +222,7 @@
         <div class="playing-card" role="listitem" tabindex="0" aria-pressed="false" aria-label="Spectacle anniversaire enfants">
           <span class="card-inner">
             <span class="card-face card-back" aria-hidden="true">
-              <img src="img/DosCartes.png" alt="Dos de carte à jouer - Magie close-up" title="Découvrir la prestation" loading="lazy" />
+              <img src="img/DosCartes.webp" alt="Dos de carte à jouer - Magie close-up" title="Découvrir la prestation" loading="lazy" />
             </span>
             <span class="card-face card-front">
               <span class="card-front-content">
@@ -216,7 +240,7 @@
         <div class="playing-card" role="listitem" tabindex="0" aria-pressed="false" aria-label="Close-up">
           <span class="card-inner">
             <span class="card-face card-back" aria-hidden="true">
-              <img src="img/DosCartes.png" alt="Dos de carte à jouer - Magie close-up" title="Découvrir la prestation" loading="lazy" />
+              <img src="img/DosCartes.webp" alt="Dos de carte à jouer - Magie close-up" title="Découvrir la prestation" loading="lazy" />
             </span>
             <span class="card-face card-front">
               <span class="card-front-content">
@@ -234,7 +258,7 @@
         <div class="playing-card" role="listitem" tabindex="0" aria-pressed="false" aria-label="Mariage">
           <span class="card-inner">
             <span class="card-face card-back" aria-hidden="true">
-              <img src="img/DosCartes.png" alt="Dos de carte à jouer - Magie close-up" title="Découvrir la prestation" loading="lazy" />
+              <img src="img/DosCartes.webp" alt="Dos de carte à jouer - Magie close-up" title="Découvrir la prestation" loading="lazy" />
             </span>
             <span class="card-face card-front">
               <span class="card-front-content">
@@ -252,7 +276,7 @@
         <div class="playing-card" role="listitem" tabindex="0" aria-pressed="false" aria-label="Entreprise">
           <span class="card-inner">
             <span class="card-face card-back" aria-hidden="true">
-              <img src="img/DosCartes.png" alt="Dos de carte à jouer - Magie close-up" title="Découvrir la prestation" loading="lazy" />
+              <img src="img/DosCartes.webp" alt="Dos de carte à jouer - Magie close-up" title="Découvrir la prestation" loading="lazy" />
             </span>
             <span class="card-face card-front">
               <span class="card-front-content">

@@ -14,6 +14,17 @@
   <meta property="og:description" content="Animation magique élégante, moderne et conviviale pour vos événements professionnels.">
   <meta property="og:image" content="https://heidilemagicien.fr/img/prestations/Carroussel/entreprise/megamage.webp">
 
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://heidilemagicien.fr/entreprise.html">
+  <meta property="twitter:title" content="Magicien Entreprise & Événementiel • Animation Pro">
+  <meta property="twitter:description" content="Animation magique élégante, moderne et conviviale pour vos événements professionnels.">
+  <meta property="twitter:image" content="https://heidilemagicien.fr/img/prestations/Carroussel/entreprise/megamage.webp">
+
+  <!-- Geo meta (SEO local) -->
+  <meta name="geo.region" content="FR-IDF">
+  <meta name="geo.placename" content="Val-d'Oise, Paris, Yvelines, Hauts-de-Seine, Île-de-France">
+
   <link rel="canonical" href="https://heidilemagicien.fr/entreprise.html">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,15 +42,31 @@
     "provider": {
       "@type": "ProfessionalService",
       "name": "Heidi Le Magicien",
-      "image": "https://heidilemagicien.fr/img/Heidi.png",
+      "image": "https://heidilemagicien.fr/img/HeidiFire.webp",
       "@id": "https://heidilemagicien.fr",
       "priceRange": "€€"
     },
     "description": "Animation de magie pour événements d'entreprise, séminaires et team building.",
-    "areaServed": {
-      "@type": "Country",
-      "name": "France"
-    }
+    "areaServed": [
+      {"@type": "AdministrativeArea", "name": "Val-d'Oise"},
+      {"@type": "AdministrativeArea", "name": "Paris"},
+      {"@type": "AdministrativeArea", "name": "Yvelines"},
+      {"@type": "AdministrativeArea", "name": "Hauts-de-Seine"},
+      {"@type": "AdministrativeArea", "name": "Île-de-France"}
+    ]
+  }
+  </script>
+
+  <!-- Breadcrumb Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://heidilemagicien.fr/"},
+      {"@type": "ListItem", "position": 2, "name": "Prestations", "item": "https://heidilemagicien.fr/#prestations"},
+      {"@type": "ListItem", "position": 3, "name": "Entreprise", "item": "https://heidilemagicien.fr/entreprise.html"}
+    ]
   }
   </script>
 </head>
@@ -48,7 +75,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html#accueil" class="brand">
-        <img class="brand-logo" src="img/Logo.png" alt="Heidi Magicien" />
+        <img class="brand-logo" src="img/Logo.webp" alt="Heidi Magicien" />
         <span class="brand-name">Heidi Le Magicien</span>
       </a>
       <nav class="site-nav" aria-label="Navigation principale">
@@ -104,9 +131,9 @@
           <div class="prestation-image reveal delay-2" aria-hidden="true">
             <div class="carousel" id="carousel-entreprise">
               <div class="carousel-track">
-                <div class="carousel-slide"><img src="img/prestations/Carroussel/entreprise/FlyingCard2.jpg" alt="Magicien soirée entreprise Paris - Carte volante" title="Spectacle magie entreprise"></div>
-                <div class="carousel-slide"><img src="img/prestations/Carroussel/entreprise/FlyingCard3.jpg" alt="Animation magie séminaire Val d'Oise - Lévitation" title="Animation magie séminaire"></div>
-                <div class="carousel-slide"><img src="img/prestations/Carroussel/entreprise/megamage.webp" alt="Magicien événementiel Île-de-France - Team Building" title="Magicien professionnel pour entreprise"></div>
+                <div class="carousel-slide"><img loading="lazy" src="img/FlyingCard2.webp" alt="Magicien soirée entreprise Paris - Carte volante" title="Spectacle magie entreprise"></div>
+                <div class="carousel-slide"><img loading="lazy" src="img/FlyingCard3.webp" alt="Animation magie séminaire Val d'Oise - Lévitation" title="Animation magie séminaire"></div>
+                <div class="carousel-slide"><img loading="lazy" src="img/prestations/Carroussel/entreprise/megamage.webp" alt="Magicien événementiel Île-de-France - Team Building" title="Magicien professionnel pour entreprise"></div>
               </div>
               <button class="carousel-btn prev" aria-label="Image précédente">&#10094;</button>
               <button class="carousel-btn next" aria-label="Image suivante">&#10095;</button>
@@ -115,6 +142,19 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <header class="section-head">
+          <h2 class="section-title">Découvrez aussi</h2>
+        </header>
+        <nav class="section-cta left" aria-label="Autres prestations">
+          <a class="btn btn-ghost" href="anniversaire.html">♦ Anniversaire</a>
+          <a class="btn btn-ghost" href="closeup.html">♠ Close-up</a>
+          <a class="btn btn-ghost" href="mariage.html">♥ Mariage</a>
+        </nav>
       </div>
     </section>
   </main>

@@ -1,0 +1,17 @@
+# Cache images, videos and fonts aggressively (1 year)
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache CSS (1 week, allow revalidation)
+/styles.css
+  Cache-Control: public, max-age=604800
+
+# Cache HTML pages (10 minutes, always revalidate)
+/*.html
+  Cache-Control: public, max-age=600
+
+# Security headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
